@@ -1,19 +1,13 @@
-# [Project Title]
-> *One sentence. What did you analyze, build, or solve - and why does it matter?*
+# Nigeria Gas-Flare Analysis (2012-2024)
+Analyzed 13 years (2012-2024) of Nigeria's Gas Flaring data from the World bank GGFR to uncover emisssion trends, identify the highest contributing operators and fields, and estimate the economic and environmental cost of flared gas across fields and operators.
 
----
 
-## ⚙️ Project Type Flags
-> *Check what applies. This helps reviewers and collaborators understand the nature of the work at a glance. Delete this block before publishing.*
-
-- [ ] Exploratory Data Analysis (EDA)
-- [ ] SQL Analysis / Querying
-- [ ] Dashboard / Data Visualization
-- [ ] Data Pipeline / ETL
-- [ ] Predictive Modelling / Machine Learning
-- [ ] Data Cleaning / Wrangling
-- [ ] End-to-End (multiple of the above)
-- [ ] Other: ___________
+## ⚙️ Project Type 
+- [x] Exploratory Data Analysis (EDA)
+- [x] SQL Analysis / Querying
+- [x] Dashboard / Data Visualization
+- [x] Data Cleaning / Wrangling
+- [x] End-to-End (multiple of the above)
 
 ---
 
@@ -24,430 +18,230 @@
 4. [Repository Structure](#4-repository-structure)
 5. [Data Workflow](#5-data-workflow)
 6. [Data Model & Schema](#6-data-model--schema)
-7. [ERD - Entity Relationship Diagram](#7-erd--entity-relationship-diagram) *(SQL projects)*
-8. [Analysis & Metrics](#8-analysis--metrics)
-9. [Key Insights](#9-key-insights)
-10. [Recommendations](#10-recommendations)
-11. [Assumptions & Limitations](#11-assumptions--limitations)
-12. [Future Enhancements](#12-future-enhancements)
-13. [Deliverables](#13-deliverables)
-14. [Author](#14-author)
+7. [Analysis & Metrics](#7-analysis--metrics)
+8. [Key Insights](#8-key-insights)
+9. [Recommendations](#9-recommendations)
+10. [Assumptions & Limitations](#10-assumptions--limitations)
+11. [Future Enhancements](#11-future-enhancements)
+12. [Deliverables](#12-deliverables)
+13. [Author](#13-author)
 
 ---
 
 ## 1. Project Overview
+---
+  Nigeria has been one of the world's largest gas flaring nation for decades. However, the operators and fields driving the majority of that flaring remained poorly invisible in national-level reporting. 
 
-<!--
-  Write 3–5 sentences in plain language.
-  Cover: context → problem → approach → outcome.
-  Read it out loud. If it sounds like a form - rewrite it.
+### Problem Statement 
+  This project explored 13 years of satellite verified flaring data from the World Bank GGFR across 210 fields and 55 operators to determine whether;
+- Nigeria's flaring problem was improving overtime.
+- Which operators and field types ere the most responsible.
+- What the true economic cost flared gas has been betwwen 2012-2024.
 
-  WHAT GOOD LOOKS LIKE:
-  "A mid-size retail business was seeing inconsistent revenue across
-  its regional stores but couldn't identify the root cause. This project
-  explored 18 months of transaction data across five regions to determine
-  whether underperformance was driven by sales volume, pricing, or return
-  rates. The analysis revealed that one region's gap was almost entirely
-  explained by an unusually high return rate on a single product category -
-  a finding invisible in the company's top-level reporting."
-
-  WHAT TO AVOID:
-  "This project analyzes sales data to find trends and insights."
-  (Too vague. Could describe 10,000 projects. Describes none of them.)
--->
-
-**Context:** [The business, research, or personal situation that motivated this project.]
-
-**Problem Statement:** [The specific question or challenge you were addressing.]
-
-**Approach:** [In 1–2 sentences - how did you tackle it?]
-
-**Outcome:** [What did you produce or discover?]
+### Outcome
+  The analysis revealed that despite 45% decline in flaring volume between 2012 and 2022, flaring reversed course in 2023 and continued rising until 2024, and that just 3 operators accounted for 41% of all gas across the entire period, a concentration that is invisible in the country's top-line reporting.
 
 ---
 
 ## 2. Objectives
+---
+The core objective was to design a Power BI dashboard that transforms 13 years of World Bank GGFR satellite-verified gas flaring data into actionable insights in order to;
 
-<!--
-  Write objectives that are specific enough to succeed or fail.
-  Use action-oriented verbs: Identify, Determine, Quantify, Build, Evaluate.
-
-  WHAT GOOD LOOKS LIKE:
-  ✅ "Determine whether customer churn rate correlates with support ticket volume."
-  ✅ "Identify the top three revenue-driving product categories across all regions."
-  ✅ "Build a reproducible pipeline that ingests and cleans daily sales exports."
-
-  WHAT TO AVOID:
-  ❌ "Explore the data."
-  ❌ "Gain insights."
-  ❌ "Understand trends."
-  (These can't fail - which means they can't succeed either.)
--->
-
-- **Primary Objective:** [The main thing you set out to do]
-- **Secondary Objective 1:** [Supporting goal]
-- **Secondary Objective 2:** [Supporting goal]
-- **Secondary Objective 3:** [Remove if not applicable]
-
-> 💡 *Every analysis decision in this project traces back to one of these objectives.*
+- **Primary Objective:** Enabling regulators, stakeholders, and energy analysts to track Nigeria's flaring trends, identify the highest-contributing operators and fields.
+  
+- **Secondary Objective 1:** Estimate the potential revenue lost due to gas flaring using Henry Hub natural gas prices, rather than relying on a single flat price assumption.
+ 
+- **Secondary Objective 2:** Measure environmental impact by calculating emissions using the industry-standard conversion factor, and map field-level emission hotspots geographically using latitude and longitude coordinates. 
 
 ---
 
 ## 3. Project Scope & Tools
 
 ### Scope
-
-<!--
-  WHAT GOOD LOOKS LIKE:
-  In Scope: "Transaction-level data for Regions A–E, Jan 2023–Jun 2024.
-             Analysis covers revenue, return rates, and product category performance."
-  Out of Scope: "Customer demographics and marketing spend data were excluded -
-                 demographic data was incomplete for two regions, and marketing
-                 data sits in a separate system outside this engagement."
-
-  WHAT TO AVOID:
-  ❌ Leaving Out of Scope blank. This is the section that protects your credibility.
-     If you don't define the fence, reviewers assume you missed things.
--->
-
+  
 | Dimension | Details |
 |-----------|---------|
-| **In Scope** | [What is included - data sources, time periods, segments] |
-| **Out of Scope** | [What you explicitly excluded - and a brief reason why] |
-| **Time Period** | [Date range of the data or the project itself] |
-| **Granularity** | [Unit of analysis - row-level, daily aggregates, per-user, etc.] |
+| **In Scope** | The gas flaring data extracted from the World Bank GGFR global dataset covering 2012–2024. Analysis covers total flaring volume in BCM, revenue loss, co2 emission, etc.|
+| **Out of Scope** |Analysis of gas flaring data outside Nigeria; The global GGFR dataset was intentionally filtered to Nigeria only for this project.|
+| **Out of Scope** | Nigeria-specific domestic gas prices were not available in the dataset; Henry Hub was used as a disclosed benchmark proxy, not as a precise representation of what operators received.|
+| **Out of Scope** | Total gas produced per field was not available in the GGFR dataset, making it impossible to calculate what percentage of produced gas was flared at the field level. |
+| **Time Period** | 2012-2024 |
 
 ### Tools & Technologies
 
-<!--
-  List only what you actually used on this project.
-  This is not your skills section - it's the project's technical context.
--->
-
-| Category | Tool(s) Used |
+| Purpose | Tool(s) Used |
 |----------|-------------|
-| Data Storage | [e.g., PostgreSQL, CSV files, BigQuery, S3] |
-| Data Processing | [e.g., Python, R, SQL, Excel, dbt] |
-| Analysis | [e.g., pandas, dplyr, custom SQL queries] |
-| Visualization | [e.g., Matplotlib, Tableau, Power BI, Looker] |
-| Version Control | [e.g., Git / GitHub] |
-| Documentation | [e.g., Markdown, Notion] |
-| Other | [Any additional tools] |
+| Data Storage | CSV files |
+| Data Processing |  SQL, Excel |
+| Analysis | SQL queries, Powerbi (Dax) |
+| Visualization | Power BI |
+| Version Control | GitHub |
 
 ---
 
 ## 4. Repository Structure
 
 ```
-[project-root]/
+Nigeria Gas Flare Analysis 2012-2024/
 │
 ├── data/
-│   ├── raw/                  # Original, unmodified source data - never edited
-│   ├── processed/            # Cleaned and transformed data
-│   └── external/             # Reference data, lookup tables, third-party files
+│   ├── raw/
+│        └── 2012-2024-Flare-Volume-Estiamte-by-individual-Flare-Location.xlsx
+│   ├── processed/
+│        └── flaring_cleaned.csv
+│   └── external/
+│       └── Henry_Hub_Prices.csv
 │
-├── notebooks/                # Jupyter, R Markdown, or Colab notebooks
+│── docs/
+│        └── flaring_filtered_documentation.xlsx
 │
-├── scripts/                  # Reusable .py, .R, or .sh processing files
+├── queries/               
+│   ├── exploratory/
+│        └── 03_eda_v1.sql
+│   ├── transformations/
+│       ├── 01_SQL_Overview_v1.sql
+│       └──  02_profiling&cleaning_v1.sql
+│   └── final/
+│        └── flaring_filtered_sql.csv     
 │
-├── queries/                  # SQL files (retain this folder for SQL-heavy projects)
-│   ├── exploratory/          # Ad-hoc or investigative queries
-│   ├── transformations/      # Cleaning and reshaping logic
-│   └── final/                # Production-ready or presentation queries
+├── reports/              
+│   ├── Gas flare Analysis 2012-2024.pdf
 │
-├── reports/                  # Final outputs: PDFs, slide decks, Word docs
+├── visuals/        
+│   ├── Executive_Overview.jpeg
+│    └── Geographical_Overview.jpeg
 │
-├── visuals/                  # Exported charts, dashboard screenshots, ERD diagrams
-│
-├── docs/                     # Data dictionaries, schema notes, reference material
-│
-├── project_metadata.yml      # Machine-readable metadata (optional)
-└── README.md                 # You are here
+└── README.md                
 ```
-
-> ⚠️ *Delete folders you didn't use. An empty folder is worse than no folder.*
-> SQL-heavy projects: keep `queries/`. Analysis-only projects: keep `notebooks/`. Both? Keep both.
 
 ---
 
 ## 5. Data Workflow
 
-<!--
-  Show how data moved through your project - from source to output.
-  Every transformation decision should be traceable here.
+1. **Source:**
+- Yearly CSV exports pulled from a single file containing satellite-verified gas flaring ,measurements from all countries, covering 2012-2024. It was accessed through the World bank open-data portal.
 
-  WHAT GOOD LOOKS LIKE:
-  1. Source: "Monthly CSV exports pulled from the internal POS system.
-              Five files, one per region, covering Jan 2023–Jun 2024."
-  2. Ingestion: "Loaded into Python using pandas. Files concatenated into
-                 a single dataframe (approx. 340,000 rows)."
-  3. Cleaning: "Removed 1.2% of rows with null transaction IDs.
-                Standardised date formats across regional files.
-                Resolved product category naming inconsistencies (3 variants → 1)."
-  4. Transformation: "Created a returns_rate field at product-category level.
-                      Aggregated to weekly and regional grain for trend analysis."
-  5. Analysis: "Descriptive statistics, regional comparison, return rate
-                segmentation by product category."
-  6. Output: "Summary report (PDF), annotated notebook, processed CSV."
+3. **Ingestion:**
+- The global GGFR Excel file was downloaded and filtered to Nigeria only using Power query, extracting 2,264 rows from a 156,329-row global dataset .
+- A supplementary Henry Hub annual gas price lookup table (2012–2024) was sourced separately from the **U.S. Energy Information Administration (EIA) through FRED** and loaded as a  CSV, then joined on the Year column in Powerbi.
+ 
+4. **Cleaning:**
+- Data was cleaned in SQL.
+- Category columns  were standardised to resolve inconsistent labelling and casing.
+- Resolved two different Operator naming inconsistencies (2 variants → 1 )
+- Fixed unnecessary capitalizations in the dataset.
+- Documented data quality issue.
+   
+5. **Transformation:**
+- Defined calculated measures (Total flared vol, CO2 emission, AVG mmscfd, etc.).
+- Compared the current year's flaring volume with the Previous Year to measure annual changes.
+- Revenue loss (calculated row-by-row via SUMX using year-specific Henry Hub prices joined through a relationship on the Year column) on powerbi.
 
-  WHAT TO AVOID:
-  ❌ "Data was cleaned and analysed." (No chain. No decisions. No trust.)
--->
+6. **Analysis:** 
+- Performed exploratory SQL analysis and built Power BI dashboards to identify gas flare trends, fields with high flaring volumes emissions, and revenue loss.
 
-```
-[Data Source(s)]
-      ↓
-[Ingestion / Collection Method]
-      ↓
-[Cleaning & Transformation]
-      ↓
-[Analysis / Modelling / Querying]
-      ↓
-[Output / Visualisation / Reporting]
-```
-
-1. **Source:** [Where did the data come from? Format, size, access method.]
-2. **Ingestion:** [How was it brought in?]
-3. **Cleaning:** [What issues did you find and fix?]
-4. **Transformation:** [What new fields, aggregations, or structures did you create?]
-5. **Analysis:** [What methods - statistical, visual, query-based, model-based?]
-6. **Output:** [What form do the results take?]
-
+7. **Output:**
+A two-page interactive Power BI dashboard
+- An Executive Summary page featuring KPI cards (total BCM, revenue loss, CO₂ emissions, YoY change) alongside trend lines, operator ranking etc
+- A Geographic Overview page featuring a bubble map of Nigeria's flaring hotspots sized by BCM and coloured by flare severity, top 10 fields bar chart and flare level distribution visual, all connected by synced slicers for Year, Operator, and Location filtering across both pages.
+- 
 ---
 
 ## 6. Data Model & Schema
 
-<!--
-  Define your fields so that someone reading your analysis can follow along
-  without digging through your code.
-
-  WHAT GOOD LOOKS LIKE (one row example):
-  | transaction_id | string | Unique identifier per sales transaction | TXN-00482 |
-  | return_flag    | boolean | Whether the transaction included a return | TRUE |
-  | region_code    | string | Two-letter identifier for store region | "NE" |
-
-  WHAT TO AVOID:
-  ❌ Skipping this section because "the field names are self-explanatory."
-     They're not. Not to a reviewer. Not to you in six months.
-
-  📌 FOR SQL PROJECTS: If you have multiple tables, create one block per table.
-     Describe join keys and relationships here. Your ERD (Section 7) will
-     visualise what this section describes in text.
-
-  📌 FOR NON-SQL PROJECTS: Describe the shape of your dataset informally
-     if a formal schema doesn't apply. Even one paragraph is more helpful than nothing.
--->
-
-### Dataset / Table: `[name]`
+### Dataset 
+Table 1: `flaring_filtered`
 
 | Field Name | Data Type | Description | Example Value |
 |------------|-----------|-------------|---------------|
-| `[field_1]` | [string / int / date / float / boolean] | [What this field represents] | [Non-sensitive example] |
-| `[field_2]` | [string / int / date / float / boolean] | [What this field represents] | [Non-sensitive example] |
-| `[field_3]` | [string / int / date / float / boolean] | [What this field represents] | [Non-sensitive example] |
+| country | text | country where flaring occurred | Nigeria |
+| latitude | decimal | geograhical latitude of flare site | 4.67864 |
+| longitude | decimal | [geographical longitude of flare site | 8.54667 |
+| bcm | decimal | flaring volume in billion cubic metre | 131.06432 |
+| mmscfd | decimal | million tandard cubic feet per day (industry flow rate) | 65.789 |
+| year | int | year of flaring event | 2012 |
+| field_type | text | oil/gas/lng field | Oil |
+| field_name | text | name of oil/gas field or production  block | Usan |
+| field_operator | text | name of petroleum operator responsible for the facility | TotalEnergies |
+| location | text | onshore or offshore | Offshore |
+| flare_level | text | qualitative intensity category of flaring | Medium |
+| flaring_vol_million_m3 | decimal | volume of gas flared in million cubic metre (mm³)| 0.13106432 |
 
-> **Row count (approx.):** [X rows]
-> **Date range:** [Start] – [End]
-> **Key join / relationship:** [e.g., `orders.customer_id` → `customers.id`]
-
-*Add additional table blocks as needed for multi-table projects.*
-
----
-
-## 7. ERD - Entity Relationship Diagram
-### *(Primarily for SQL Projects - remove this section if not applicable)*
-
-<!--
-  An ERD shows how your tables connect to each other visually.
-  It is the fastest way for a reviewer to understand the data structure
-  of a SQL project without reading every query.
-
-  HOW TO INCLUDE YOUR ERD:
-  Option A - Image embed (most common):
-    Export your ERD from dbdiagram.io, DBeaver, Lucidchart, or similar.
-    Save to /visuals/erd.png and reference it below.
-
-  Option B - dbdiagram.io code block (version-controllable):
-    Paste your schema definition code directly in the fenced block below.
-    Anyone can paste it into dbdiagram.io to regenerate the visual.
-
-  Option C - Mermaid diagram (renders natively in GitHub):
-    Use the mermaid code block syntax below.
-    GitHub will render this as a diagram automatically.
-
-  PICK ONE. Don't use all three. Delete the options you don't use.
--->
-
-### Option A - Embedded Image
-![ERD Diagram](visuals/erd.png)
-*[Brief caption: e.g., "Three-table schema - orders, customers, and products joined on shared IDs."]*
-
----
-
-### Option B - dbdiagram.io Schema Definition
-```
-Table orders {
-  order_id    int     [pk]
-  customer_id int     [ref: > customers.customer_id]
-  product_id  int     [ref: > products.product_id]
-  order_date  date
-  amount      float
-}
-
-Table customers {
-  customer_id int  [pk]
-  region_code string
-  signup_date date
-}
-
-Table products {
-  product_id   int    [pk]
-  category     string
-  unit_price   float
-}
-```
-*Paste this into [dbdiagram.io](https://dbdiagram.io) to view the visual.*
-
----
-
-### Option C - Mermaid Diagram *(renders on GitHub)*
-```mermaid
-erDiagram
-    ORDERS {
-        int order_id PK
-        int customer_id FK
-        int product_id FK
-        date order_date
-        float amount
-    }
-    CUSTOMERS {
-        int customer_id PK
-        string region_code
-        date signup_date
-    }
-    PRODUCTS {
-        int product_id PK
-        string category
-        float unit_price
-    }
-    ORDERS ||--o{ CUSTOMERS : "placed by"
-    ORDERS ||--o{ PRODUCTS : "contains"
-```
+Table 2: `Henry_Hub_Pices.csv`
+| Field Name | Data Type | Description | Example Value |
+|------------|-----------|-------------|---------------|
+| year | int | year of flaring event | 2012 |
+| price | decimal | gas price usd per mmbtu | 2.21 |
 
 ---
 
 **Table Relationships Summary:**
 
-| Relationship | Join Key | Type |
-|-------------|----------|------|
-| `orders` → `customers` | `customer_id` | Many-to-One |
-| `orders` → `products` | `product_id` | Many-to-One |
-| [Add rows as needed] | | |
+| Relationship  | Type |
+|-------------|------|
+| Flaring_filtered [`year`] →  Henry_hub [`year`]| one-to-many |
 
 ---
 
-## 8. Analysis & Metrics
-
-<!--
-  Explain what you measured and how - before you share what you found.
-
-  WHAT GOOD LOOKS LIKE:
-  Metric: "Customer Return Rate"
-  Definition: "Number of transactions flagged as returns divided by total
-               transactions, calculated at product-category and regional grain."
-  Why It Matters: "Return rate - not sales volume - was hypothesised to
-                  explain regional revenue gaps. This metric tests that hypothesis."
-
-  WHAT TO AVOID:
-  ❌ Defining a metric only in code: SUM(returns) / COUNT(transaction_id)
-     That's an implementation. Write the plain-language definition here.
-     Both belong in your project - the definition in the README,
-     the implementation in the code.
--->
+## 7. Analysis & Metrics
 
 ### Analytical Approach
+This project followed an exploratory data analysis (EDA) approach to understand gas flaring trends in Nigeria.
 
-[Describe how you approached the analysis. Were you exploring patterns? Testing a hypothesis? Building and validating a pipeline? Be honest about your method - exploratory work is valid, just call it that.]
+### Key Metrics
 
-### Key Metrics Defined
-
-| Metric | Plain-Language Definition | Why It Matters |
+| Metric | Description | Business value |
 |--------|--------------------------|----------------|
-| `[Metric 1]` | [What it measures, in one sentence] | [What decision or question it answers] |
-| `[Metric 2]` | [What it measures, in one sentence] | [What decision or question it answers] |
-| `[Metric 3]` | [What it measures, in one sentence] | [What decision or question it answers] |
+| `Total gas flared` | Total volume of gas flared across Nigeria during the analysis period | Measures the scale of gas flaring |
+| `Estimated Revenue Loss` | Estimated economic value of gas flared using hanry hub prices | Quantifies the financial impact of gas flaring |
+| `CO₂ Emission` | Carbon dioxide emission gotten from flaring | Evaluates environmental impact|
+| `YOY` | percentage change in gas flaring volume compared to previous year | Identifies increasing or decreasing flaring trends. |
+
 
 ### Methods Used
 
-- [e.g., Descriptive statistics - distribution, central tendency, outlier detection]
-- [e.g., Trend analysis across [time period]]
-- [e.g., Segmentation / group comparison by [dimension]]
-- [e.g., Correlation analysis between [variable A] and [variable B]]
-- [e.g., SQL window functions for [specific aggregation]]
-- [e.g., Custom aggregation or transformation logic in [tool]]
+-  Trend analysis across 2012-2024
+-  prepared the dataset in Excel by filtering the global dataset to Nigeria and documenting data quality issues.
+-  SQL window functions and aggregations to answer key analytical questions
+-  Developed DAX measures for business metrics, including Year-over-Year Growth, Total CO₂ Emissions, and Estimated Revenue Lost.
+-  Built an interactive Power BI dashboard to present key environmental and economic insights for stakeholders.
 
 ---
 
 ## 9. Key Insights
 
-<!--
-  Findings + implications. Not just what happened - what it means.
+**Insight 1: Nigeria Gas Flaring Decline is Frugal Not Structural**
 
-  WHAT GOOD LOOKS LIKE:
-  ✅ "Return rates, not sales volume, explain Region A's underperformance.
-      Region A's return rate on home goods was 34% - more than double the
-      company average. Revenue was not lost at the point of sale; it was
-      lost post-sale through refunds. This points to a fulfilment or
-      product quality issue specific to that region, not a demand problem."
+Nigeria reduced annual gas flaring from 9.62 BCM in 2012 to 5.32 BCM in 2022 (a 45% decline). However, flaring rebounded in 2023 (+8.8%) and 2024 (+12%), suggesting the earlier decline was likely driven by production disruption rather than the result of sustained infrastructure improvements or regulatory enforcement.
 
-  WHAT TO AVOID:
-  ❌ "Region A had lower revenue than other regions in Q4."
-     (That's an observation. It describes what happened.
-      An insight says what it means and where to look next.)
+**Insight 2: Three Operators Hold the Key to Nigeria's Flaring Problem**
 
-  Aim for 3–6 insights. Quality over quantity.
--->
+ExxonMobil, Eni, and Chevron contributed approximately 41% of Nigeria's total gas flaring between 2012 and 2024. This concentration suggests that targeted regulation and gas capture investments focused on these operators could deliver a greater national impact than broad industry-wide policies.
 
-**Insight 1: [Short descriptive headline]**
-[What you found + what it suggests. One short paragraph.]
+**Insight 3: Gas Price Volatility Makes Flat Revenue Loss Estimates Dangerously Misleading**
 
-**Insight 2: [Short descriptive headline]**
-[What you found + what it suggests.]
+Integrating year-specific Henry Hub gas prices showed that the estimated revenue lost from gas flaring varied significantly over time. Gas prices ranged from $2.03/MMBtu (2020) to $6.45/MMBtu (2022), demonstrating that using a single gas price would misrepresent the true economic cost of flaring.
 
-**Insight 3: [Short descriptive headline]**
-[What you found + what it suggests.]
+**Insight 4 : Offshore Flaring is an Equally Significant but Systematically Overlooked Problem** 
 
-**Insight 4 (if applicable): [Short descriptive headline]**
-[What you found + what it suggests.]
+Gas flaring was almost evenly split between offshore (47.4%) and onshore (52.6%) operations. Despite this, policy and public attention have largely focused on onshore flaring, indicating that offshore emissions may be under-prioritized.
+
+**Insight 5 : Flare Severity Classification Understates Where the Real Damage Is**
+
+Medium-classified fields generated approximately 71% of total gas flaring despite representing only 28% of records, while small fields made up 72% of records but contributed just 28% of flaring. This suggests that prioritizing enforcement by the number of flagged fields rather than flaring volume may overlook the highest-impact emission sources.
+
 
 ---
 
 ## 10. Recommendations
 
-<!--
-  Action-oriented. Addressed to a real audience.
-  Tied explicitly to the insight that supports each one.
+| Priority | Recommendation | Based On |
+|----------|---------------|----------|
+| High | Prioritize gas capture investments for ExxonMobil, Eni, and Chevron, as these operators account for approximately 41% of Nigeria's total gas flaring. | insight 2 | 
+| High | Adopt a volume-based flare severity framework so regulatory enforcement targets the highest-emitting fields rather than the most frequently flagged sites. | insight 5 | 
+| High |  Investigate the 2023–2024 increase in gas flaring to identify whether the rebound was driven by production, infrastructure, or regulatory challenges before introducing new reduction targets | insight 1 | 
+| Meduim | Standardize annual revenue loss reporting using year-specific gas prices to provide a more accurate estimate of the economic cost of gas flaring. | insight 3 | 
 
-  WHAT GOOD LOOKS LIKE:
-  Priority: High
-  Recommendation: "Conduct a fulfilment audit for home goods deliveries
-                   in Region A - specifically investigating whether returns
-                   correlate with a particular warehouse, carrier, or SKU batch."
-  Based On: Insight 1 - return rate anomaly in Region A
-  Owner: Operations / Supply Chain team
-
-  WHAT TO AVOID:
-  ❌ "Improve the return rate."
-     (Not actionable. Doesn't say who, how, or where to start.)
-  ❌ "Further analysis is needed."
-     (This is a placeholder, not a recommendation.)
--->
-
-| Priority | Recommendation | Based On | Suggested Owner |
-|----------|---------------|----------|-----------------|
-| High | [Specific, actionable step] | [Insight it comes from] | [Who should act] |
-| Medium | [Specific, actionable step] | [Insight it comes from] | [Who should act] |
-| Low | [Exploratory or longer-term suggestion] | [Insight it comes from] | [Who should act] |
 
 ---
 
@@ -469,39 +263,24 @@ erDiagram
 -->
 
 ### Assumptions
-- [What did you treat as true without being able to verify?]
-- [What simplifications did you make for scope or feasibility?]
-- [What domain rules or definitions did you accept as given?]
+- Henry Hub annual average gas prices were used as a proxy to estimate the economic value of Nigeria's flared gas due to the absence of Nigeria-specific gas price data.
+- The GGFR CO₂ emission factor (2.75 kg CO₂/m³) was applied consistently across all records.
+- GGFR field locations, operator names, and classifications were assumed to be accurate.
+- Annual average Henry Hub prices were applied uniformly to each year's flaring volume, without accounting for intra-year price fluctuations.
+- Fields classified as "NA" were retained as a separate category without reclassification.
 
 ### Limitations
-- [What gaps exist in the data?]
-- [What analysis was out of scope but could affect interpretation?]
-- [What would a more rigorous version of this project include?]
-- [Are there known biases in the data source or collection method?]
-
-> *The goal here is pre-emptive Q&A. What would a thoughtful skeptic push back on? Document the answer here, before they ask.*
+- The GGFR dataset does not include total gas production volumes, preventing calculation of flare ratios by field or operator.
+- Revenue loss estimates are based on Henry Hub prices and may not reflect actual Nigerian domestic gas prices, representing an approximate estimate rather than realized values.
+- Satellite-derived GGFR data may not capture very small or intermittent flaring events, potentially understating total flaring volumes.
+- Environmental analysis focuses on CO₂ emissions and does not account for methane slip or other pollutants.
 
 ---
 
 ## 12. Future Enhancements
+- Additional datasets (e.g., Nigerian gas prices, production volumes, and regulatory records) would improve the accuracy and depth of future analyses.
+- Expand the Environmental Impact Model to Include Methane and Non-CO₂ Emissions
 
-<!--
-  WHAT GOOD LOOKS LIKE:
-  ✅ "Automate the monthly data pull from the POS export folder using
-      a scheduled Python script, replacing the current manual process."
-  ✅ "Expand the return rate analysis to include carrier-level data,
-      which was unavailable in this dataset but exists in the logistics system."
-
-  WHAT TO AVOID:
-  ❌ "Add a machine learning model."
-     (Vague, and disconnected from the actual findings of this project.)
-  ❌ Listing aspirational features that don't follow logically from the work.
--->
-
-- [ ] [Enhancement 1 - specific and traceable to a real gap in this project]
-- [ ] [Enhancement 2]
-- [ ] [Enhancement 3]
-- [ ] [Enhancement 4]
 
 ---
 
@@ -520,11 +299,10 @@ erDiagram
 **[Your Name]**
 [Your role or title - current or target]
 
-- 🔗 [LinkedIn URL]
-- 💼 [Portfolio or GitHub profile URL]
-- 📧 [Email - optional]
+- 🔗 [ linkedin]
+- 💼 [Portfo]
+- 📧 [amandaekwueme540@gmail.com]
 
 ---
 
-*Last updated: [Month YYYY]*
-*If this template helped you, consider starring the repository.*
+
