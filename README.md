@@ -23,13 +23,13 @@ Analyzed 13 years (2012-2024) of Nigeria's Gas Flaring data from the World bank 
 9. [Recommendations](#9-recommendations)
 10. [Assumptions & Limitations](#10-assumptions--limitations)
 11. [Future Enhancements](#11-future-enhancements)
-12. [Deliverables](#12-deliverables)
+12. [Dashboard](#12-dashboard)
 13. [Author](#13-author)
 
 ---
 
 ## 1. Project Overview
----
+
   Nigeria has been one of the world's largest gas flaring nation for decades. However, the operators and fields driving the majority of that flaring remained poorly invisible in national-level reporting. 
 
 ### Problem Statement 
@@ -121,30 +121,31 @@ Nigeria Gas Flare Analysis 2012-2024/
 1. **Source:**
 - Yearly CSV exports pulled from a single file containing satellite-verified gas flaring ,measurements from all countries, covering 2012-2024. It was accessed through the World bank open-data portal.
 
-3. **Ingestion:**
+2. **Ingestion:**
 - The global GGFR Excel file was downloaded and filtered to Nigeria only using Power query, extracting 2,264 rows from a 156,329-row global dataset .
 - A supplementary Henry Hub annual gas price lookup table (2012–2024) was sourced separately from the **U.S. Energy Information Administration (EIA) through FRED** and loaded as a  CSV, then joined on the Year column in Powerbi.
  
-4. **Cleaning:**
+3. **Cleaning:**
 - Data was cleaned in SQL.
 - Category columns  were standardised to resolve inconsistent labelling and casing.
 - Resolved two different Operator naming inconsistencies (2 variants → 1 )
 - Fixed unnecessary capitalizations in the dataset.
 - Documented data quality issue.
    
-5. **Transformation:**
+4. **Transformation:**
 - Defined calculated measures (Total flared vol, CO2 emission, AVG mmscfd, etc.).
 - Compared the current year's flaring volume with the Previous Year to measure annual changes.
 - Revenue loss (calculated row-by-row via SUMX using year-specific Henry Hub prices joined through a relationship on the Year column) on powerbi.
 
-6. **Analysis:** 
+5. **Analysis:** 
 - Performed exploratory SQL analysis and built Power BI dashboards to identify gas flare trends, fields with high flaring volumes emissions, and revenue loss.
 
-7. **Output:**
+6. **Output:**
 A two-page interactive Power BI dashboard
+
 - An Executive Summary page featuring KPI cards (total BCM, revenue loss, CO₂ emissions, YoY change) alongside trend lines, operator ranking etc
 - A Geographic Overview page featuring a bubble map of Nigeria's flaring hotspots sized by BCM and coloured by flare severity, top 10 fields bar chart and flare level distribution visual, all connected by synced slicers for Year, Operator, and Location filtering across both pages.
-- 
+  
 ---
 
 ## 6. Data Model & Schema
@@ -247,21 +248,6 @@ Medium-classified fields generated approximately 71% of total gas flaring despit
 
 ## 11. Assumptions & Limitations
 
-<!--
-  WHAT GOOD LOOKS LIKE:
-  Assumption: "Transaction records were assumed to be complete for all five regions.
-               No validation was performed against source system record counts."
-  Limitation: "The analysis cannot distinguish between returns initiated by
-               the customer vs. returns initiated by the business (e.g., recalls).
-               If business-initiated returns are concentrated in Region A, the
-               return rate finding may reflect a policy decision, not a quality issue."
-
-  WHAT TO AVOID:
-  ❌ Leaving this section blank or writing "None known."
-     Every project has limitations. Documenting them is a sign of
-     analytical maturity - not a confession of failure.
--->
-
 ### Assumptions
 - Henry Hub annual average gas prices were used as a proxy to estimate the economic value of Nigeria's flared gas due to the absence of Nigeria-specific gas price data.
 - The GGFR CO₂ emission factor (2.75 kg CO₂/m³) was applied consistently across all records.
@@ -284,23 +270,27 @@ Medium-classified fields generated approximately 71% of total gas flaring despit
 
 ---
 
-## 13. Deliverables
+## 13. Dashboard
 
-| Deliverable | Description | Location |
-|-------------|-------------|----------|
-| [Name] | [What it contains] | [`/path/to/file`] |
-| [Name] | [What it contains] | [`/path/to/file`] |
-| [Name] | [What it contains] | [`/path/to/file`] |
+## Executive Overview
+
+![Executive Overview](visuals/Executive_Overview.jpeg)
+
+---
+
+## Geographical Analysis
+
+![Geographical Analysis](visuals/Geographical_Overview.jpeg)
 
 ---
 
 ## 14. Author
 
-**[Your Name]**
-[Your role or title - current or target]
+**Ekwueme Ifeoma**
 
-- 🔗 [ linkedin]
-- 💼 [Portfo]
+Data Analyst - Aspiring Business intelligence Analyst]
+
+- 🔗 [ www.linkedin.com/in/ifeoma-ekwueme]
 - 📧 [amandaekwueme540@gmail.com]
 
 ---
