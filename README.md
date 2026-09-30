@@ -141,7 +141,7 @@ Nigeria Gas Flare Analysis 2012-2024/
 - Performed exploratory SQL analysis and built Power BI dashboards to identify gas flare trends, fields with high flaring volumes emissions, and revenue loss.
 
 6. **Output:**
-A two-page interactive Power BI dashboard
+A two-page Power BI dashboard
 
 - An Executive Summary page featuring KPI cards (total BCM, revenue loss, CO₂ emissions, YoY change) alongside trend lines, operator ranking etc
 - A Geographic Overview page featuring a bubble map of Nigeria's flaring hotspots sized by BCM and coloured by flare severity, top 10 fields bar chart and flare level distribution visual, all connected by synced slicers for Year, Operator, and Location filtering across both pages.
@@ -205,7 +205,7 @@ This project followed an exploratory data analysis (EDA) approach to understand 
 -  prepared the dataset in Excel by filtering the global dataset to Nigeria and documenting data quality issues.
 -  SQL window functions and aggregations to answer key analytical questions
 -  Developed DAX measures for business metrics, including Year-over-Year Growth, Total CO₂ Emissions, and Estimated Revenue Lost.
--  Built an interactive Power BI dashboard to present key environmental and economic insights for stakeholders.
+-  Built a Power BI dashboard to present key environmental and economic insights for stakeholders.
 
 ---
 
