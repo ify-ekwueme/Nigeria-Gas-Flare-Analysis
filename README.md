@@ -209,7 +209,7 @@ This project followed an exploratory data analysis (EDA) approach to understand 
 
 ---
 
-## 9. Key Insights
+## 8. Key Insights
 
 **Insight 1: Nigeria Gas Flaring Decline is Frugal Not Structural**
 
@@ -234,7 +234,7 @@ Medium-classified fields generated approximately 71% of total gas flaring despit
 
 ---
 
-## 10. Recommendations
+## 9. Recommendations
 
 | Priority | Recommendation | Based On |
 |----------|---------------|----------|
@@ -246,7 +246,7 @@ Medium-classified fields generated approximately 71% of total gas flaring despit
 
 ---
 
-## 11. Assumptions & Limitations
+## 10. Assumptions & Limitations
 
 ### Assumptions
 - Henry Hub annual average gas prices were used as a proxy to estimate the economic value of Nigeria's flared gas due to the absence of Nigeria-specific gas price data.
@@ -263,14 +263,14 @@ Medium-classified fields generated approximately 71% of total gas flaring despit
 
 ---
 
-## 12. Future Enhancements
+## 11. Future Enhancements
 - Additional datasets (e.g., Nigerian gas prices, production volumes, and regulatory records) would improve the accuracy and depth of future analyses.
 - Expand the Environmental Impact Model to Include Methane and Non-CO₂ Emissions
 
 
 ---
 
-## 13. Dashboard
+## 12. Dashboard
 
 ## Executive Overview
 
@@ -284,7 +284,7 @@ Medium-classified fields generated approximately 71% of total gas flaring despit
 
 ---
 
-## 14. Author
+## 13. Author
 
 **Ekwueme Ifeoma**
 
